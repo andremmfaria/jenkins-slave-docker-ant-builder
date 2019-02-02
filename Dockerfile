@@ -16,7 +16,7 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
 RUN mkdir /tmp/tempdownload && \
     curl --insecure -o /tmp/tempdownload/scanner.zip -L https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-linux.zip && \
     unzip /tmp/tempdownload/scanner.zip -d /tmp/tempdownload && \
-    mv /tmp/tempdownload/$(ls /tmp/tempdownload/sonar-scanner-*) /opt/sonar-scanner && \
+    mv /tmp/tempdownload/$(ls /tmp/tempdownload | grep sonar-scanner) /opt/sonar-scanner && \
     rm -rf /tmp/tempdownload
 # Cleanup image
 RUN apt-get autoclean -y && \
