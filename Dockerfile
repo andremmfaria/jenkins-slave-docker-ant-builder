@@ -14,7 +14,7 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
     apt-get install -y nodejs openjdk-8-jdk sshpass ant jq 
 #Install Sonar-Scanner
 RUN mkdir /tmp/tempdownload && \
-    curl --insecure -o /tmp/scanner.zip -L https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-linux.zip && \
+    curl --insecure -o /tmp/tempdownload/scanner.zip -L https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-linux.zip && \
     unzip /tmp/tempdownload/scanner.zip -d /tmp/tempdownload && \
     mv /tmp/tempdownload/$(ls /tmp/tempdownload/sonar-scanner-*) /opt/sonar-scanner && \
     rm -rf /tmp/tempdownload
