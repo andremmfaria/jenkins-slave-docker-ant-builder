@@ -11,7 +11,8 @@ RUN apt-get update && \
     apt-get install -y gnupg unzip git openssh-server curl 
 # Install requirements
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
-    apt-get install -y nodejs openjdk-8-jdk sshpass ant jq 
+    apt-get install -y nodejs openjdk-8-jdk sshpass jq snap && \
+    snap install terraform
 #Install Sonar-Scanner
 RUN mkdir /tmp/tempdownload && \
     curl --insecure -o /tmp/tempdownload/scanner.zip -L https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-linux.zip && \
