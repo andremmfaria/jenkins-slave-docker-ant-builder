@@ -11,7 +11,7 @@ RUN apt-get update && \
     apt-get install -y gnupg unzip git openssh-server curl 
 # Install requirements
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
-    apt-get install -y nodejs openjdk-8-jdk sshpass jq snap && \
+    apt-get install -y nodejs openjdk-8-jdk sshpass jq snapd && \
     snap install terraform
 #Install Sonar-Scanner
 RUN mkdir /tmp/tempdownload && \
