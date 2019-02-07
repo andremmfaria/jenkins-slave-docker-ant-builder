@@ -4,16 +4,21 @@ MAINTAINER Andre Faria <andre.faria@multilaser.com.br>
 #ENV Sonar-Scanner
 ENV SONAR_RUNNER_HOME=/opt/sonar-scanner
 ENV PATH $PATH:/opt/sonar-scanner/bin
+ENV TERRAFORM_VER="0.11.11"
 
 # Update system
 RUN apt-get update && \
     apt-get -y dist-upgrade && \
-    apt-get install -y gnupg unzip git openssh-server curl 
+    apt-get install -y wget gnupg unzip git openssh-server curl software-properties-common
 # Install requirements
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
-    apt-get install -y nodejs openjdk-8-jdk sshpass jq snapd && \
-    service snapd restart && \
-    snap install terraform
+    apt-add-repository ppa:ansible/ansible -y && \
+    apt-get install -y ansible nodejs openjdk-8-jdk sshpass jq
+# Install Terraform    
+RUN wget https://releases.hashicorp.com/terraform/${TERRAFORM_VER}/terraform_${TERRAFORM_VER}_linux_amd64.zip && \
+    unzip terraform_${TERRAFORM_VER}_linux_amd64.zip && \
+    mv terraform /usr/local/bin && \
+    rm -r terraform_${TERRAFORM_VER}_linux_amd64.zip
 #Install Sonar-Scanner
 RUN mkdir /tmp/tempdownload && \
     curl --insecure -o /tmp/tempdownload/scanner.zip -L https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-linux.zip && \
