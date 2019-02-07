@@ -12,7 +12,7 @@ RUN apt-get update && \
 # Install requirements
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
     apt-get install -y nodejs openjdk-8-jdk sshpass jq snapd && \
-    service restart snapd
+    service restart snapd && \
     snap install terraform
 #Install Sonar-Scanner
 RUN mkdir /tmp/tempdownload && \
