@@ -1,5 +1,5 @@
 FROM ubuntu:18.04
-MAINTAINER Andre Faria <andre.faria@multilaser.com.br>
+MAINTAINER Andre Faria <andremarcalfaria@gmail.com>
 
 #ENV Sonar-Scanner
 ENV SONAR_RUNNER_HOME=/opt/sonar-scanner
